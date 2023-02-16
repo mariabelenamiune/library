@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'library-poc'`, () => {
+  it(`should have as title 'quote-poc'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('library-poc');
+    expect(app.title).toEqual('quote-poc');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('library-poc app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('quote-poc app is running!');
   });
 });
