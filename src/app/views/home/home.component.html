@@ -1,4 +1,6 @@
 <h2>Principal view </h2>
-<button (click)="obtainQuote()">Quote of the day</button>
+<button (click)="obtainPopularMovies()">Popular movies at the moment</button>
 
-<p>{{ quote }}</p>
+<ul *ngFor="let movie of movies">
+  <li>{{movie.title}}</li>
+</ul>

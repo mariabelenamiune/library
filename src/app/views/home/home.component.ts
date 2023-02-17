@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuotesService } from '../../services/quotes.service';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +8,16 @@ import { QuotesService } from '../../services/quotes.service';
 })
 export class HomeComponent implements OnInit {
 
-  quote: string = '';
+  movies: any;
 
 
-  constructor(private quotesService: QuotesService) { }
+  constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {}
 
-  obtainQuote() {
-    this.quotesService.getQuoteOfTheDay().subscribe((response) => {
-      this.quote = response.contents.quotes[0].quote;
+  obtainPopularMovies() {
+    this.moviesService.getPopularMovies().subscribe((response) => {
+      this.movies = response.results;
     });
   }
 
