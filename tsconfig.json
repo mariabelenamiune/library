@@ -22,7 +22,13 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@env/*": ["env/*"],
+      "@app/*": ["app/*"],
+      "@auth/*": ["auth/*"],
+      "@movies/*": ["movies/*"],
+    },
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
