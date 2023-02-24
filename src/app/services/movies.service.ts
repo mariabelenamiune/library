@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { environment } from 'src/environments/environment';
+import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/movie.model';
-import { PopularMovie } from '../models/popular-movies.model';
+import { PopularMovie } from '@app/models/popular-movies.model';
 
 @Injectable({
   providedIn: 'root'

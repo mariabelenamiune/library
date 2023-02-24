@@ -24,10 +24,10 @@
       "dom"
     ],
     "paths": {
-      "@env/*": ["env/*"],
-      "@app/*": ["app/*"],
-      "@auth/*": ["auth/*"],
-      "@movies/*": ["movies/*"],
+      "@env/*": ["src/environments/*"],
+      "@app/*": ["src/app/*"],
+      "@auth/*": ["src/auth/*"],
+      "@movies/*": ["src/movies/*"],
     },
   },
   "angularCompilerOptions": {
