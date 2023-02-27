@@ -15,7 +15,7 @@ Crear un módulos específicos para: --DONE
 - shared: material, components genéricos (navegaciones), etc
 
 Estructurar los módulo según las siguientes categorías:
-- routes: la navegación debe ser un módulo dentro de movies, no debe estar en el `app-routing.module` -- DONE
+- routes: la navegación debe ser un módulo dentro de movies, no debe estar en el `app-routing.module` -- consultar 
 - components (no "views") -- DONE
 - services -- DONE 
 - config (por ahora que exporte solamente un objeto vacío, mas adelante nos va a servir para configuraciones específicas como filtros, etc) -- DONE
@@ -39,6 +39,6 @@ Ejemplo: https://www.typescriptlang.org/tsconfig#paths
 
 Diagramar las navegaciónes y los componentes según los siguientes diagramas:
 - navegación general: https://drive.google.com/file/d/1WzlzRj04M8l5neOS6PTdu-YSrjceCtZJ/view?usp=sharing
-- views: https://drive.google.com/file/d/1caBVFxWtueq--UMUhCx8JU0DtBbiKtGj/view?usp=sharing
+- views: https://drive.google.com/file/d/1caBVFxWtueq--UMUhCx8JU0DtBbiKtGj/view?usp=sharing --DONE
 
 
