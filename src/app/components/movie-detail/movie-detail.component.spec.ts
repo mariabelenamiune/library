@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovieDetailComponent } from "./movie-detail.component";
+import { MovieDetailComponent } from './movie-detail.component';
 
-describe("MovieDetailComponent", () => {
+describe('MovieDetailComponent', () => {
   let component: MovieDetailComponent;
   let fixture: ComponentFixture<MovieDetailComponent>;
 
@@ -16,7 +16,7 @@ describe("MovieDetailComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -3,8 +3,5 @@
   "trailingComma": "none",
   "endOfLine": "auto",
   "tabWidth": 2,
-  "semi": true,
-  "prettier.semi": true,
-  "bracketSpacing": true,
-  "jsxBracketSameLine": true
+  "semi": true
 }

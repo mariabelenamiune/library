@@ -38,7 +38,7 @@ Ejemplo: https://www.typescriptlang.org/tsconfig#paths
 
 
 Diagramar las navegaciónes y los componentes según los siguientes diagramas:
-- navegación general: https://drive.google.com/file/d/1WzlzRj04M8l5neOS6PTdu-YSrjceCtZJ/view?usp=sharing
+- navegación general: https://drive.google.com/file/d/1WzlzRj04M8l5neOS6PTdu-YSrjceCtZJ/view?usp=sharing --DONE 
 - views: https://drive.google.com/file/d/1caBVFxWtueq--UMUhCx8JU0DtBbiKtGj/view?usp=sharing --DONE
 
 

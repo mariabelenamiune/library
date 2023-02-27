@@ -11,12 +11,12 @@
     "sourceType": "module"
   },
   "rules": {
-    "prettier/prettier": ["error", {"singleQuote": false}],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "no-undef": "off",
     "no-empty-function": "off",
     "@typescript-eslint/no-empty-function": "off",
-    "@angular-eslint/no-empty-lifecycle-method": "off"
+    "@angular-eslint/no-empty-lifecycle-method": "off",
+    "prettier/prettier": ["error", { "singleQuote": true }]
   }
 }
