@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { LoginComponent } from '@auth/components/login/login.component';
 import { ProfileComponent } from '@auth/components/profile/profile.component';
 import { SharedModule } from '@shared/shared.module';
