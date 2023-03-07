@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MovieDetailComponent } from '@app/components/movie-detail/movie-detail.component';
-import { MoviesListComponent } from '@app/components/movies-list/movies-list.component';
-import { TopNavComponent } from '@app/components/top-nav/top-nav.component';
+import { MovieDetailComponent } from '@movies/components/movie-detail/movie-detail.component';
+import { MoviesListComponent } from '@movies/components/movies-list/movies-list.component';
+import { MoviesRoutingModule } from '@app/movies/movies-routing.module';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-  declarations: [MovieDetailComponent, MoviesListComponent, TopNavComponent],
-  imports: [CommonModule],
-  exports: [MovieDetailComponent, MoviesListComponent, TopNavComponent]
+  declarations: [MovieDetailComponent, MoviesListComponent],
+  imports: [MoviesRoutingModule, SharedModule]
 })
-export class MoviesModule {}
+// eslint-disable-next-line prettier/prettier
+export class MoviesModule { }

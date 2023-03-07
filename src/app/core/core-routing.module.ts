@@ -6,12 +6,16 @@ const routes: Routes = [
   {
     path: '',
     component: MoviesListComponent
+  },
+  {
+    path: '**',
+    component: MoviesListComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 // eslint-disable-next-line prettier/prettier
-export class AppRoutingModule { }
+export class CoreRoutingModule { }
