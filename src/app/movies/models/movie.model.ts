@@ -1,4 +1,4 @@
-export class Movie {
+export interface Movie {
   id: number;
   page: number;
   results: Results[];
@@ -6,12 +6,13 @@ export class Movie {
   total_results: number;
 }
 
-export class Results {
-  description: string;
-  id: number;
-  favoriteCount: number;
-  itemCount: number;
-  listType: string;
-  name: string;
-  posterPath: string;
+export interface Results {
+  description?: string;
+  id?: number;
+  favoriteCount?: number;
+  itemCount?: number;
+  listType?: string;
+  name?: string;
+  posterPath?: string;
+  title: string;
 }

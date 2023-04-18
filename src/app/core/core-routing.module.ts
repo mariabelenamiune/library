@@ -17,5 +17,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-// eslint-disable-next-line prettier/prettier
+
 export class CoreRoutingModule { }

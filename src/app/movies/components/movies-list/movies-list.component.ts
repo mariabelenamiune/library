@@ -1,5 +1,5 @@
-/* eslint-disable prettier/prettier */
 import { Component, OnInit } from '@angular/core';
+import { PopularResults } from '@app/movies/models/popular-movies.model';
 import { MoviesService } from '@movies/services/movies.service';
 
 @Component({
@@ -8,16 +8,16 @@ import { MoviesService } from '@movies/services/movies.service';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  movies: any;
+  movies: PopularResults[];
+  errorMessage: string;
+  errorResponse: boolean;
 
   constructor(private moviesService: MoviesService) { }
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  ngOnInit(): void { }
-
-  obtainPopularMovies() {
-    this.moviesService.getPopularMovies().subscribe((response) => {
-      this.movies = response.results;
-    });
+  ngOnInit(): void {
+    this.moviesService.getPopularMovies().subscribe((movies) => {
+      this.movies = movies.results
+    }
+    )
   }
 }

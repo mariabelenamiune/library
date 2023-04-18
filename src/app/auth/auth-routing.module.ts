@@ -6,11 +6,11 @@ import { ProfileComponent } from '@auth/components/profile/profile.component';
 const routes: Routes = [
   {
     path: 'auth/login',
-    component: LoginComponent
+    redirectTo: 'auth/login'
   },
   {
     path: 'auth/profile',
-    component: ProfileComponent
+    redirectTo: 'auth/profile'
   }
 ];
 
@@ -18,5 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-// eslint-disable-next-line prettier/prettier
+
 export class AuthRoutingModule { }

@@ -1,4 +1,3 @@
 /* eslint-disable prettier/prettier */
-export default Object({
-
+export default Object.freeze({
 });

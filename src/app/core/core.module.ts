@@ -8,5 +8,5 @@ import { CoreRoutingModule } from '@core/core-routing.module';
   imports: [SharedModule, CoreRoutingModule],
   exports: [TopNavComponent]
 })
-// eslint-disable-next-line prettier/prettier
+
 export class CoreModule { }

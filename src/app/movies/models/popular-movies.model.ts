@@ -1,11 +1,11 @@
-export class PopularMovie {
+export interface PopularMovie {
   page: number;
-  results: Results[];
+  results: PopularResults[];
   total_pages: number;
   total_results: number;
 }
 
-class Results {
+export interface PopularResults {
   adult: boolean;
   backdropPath: string;
   genreIds: number[];

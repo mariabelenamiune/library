@@ -7,5 +7,5 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule],
   exports: [CommonModule, RouterModule]
 })
-// eslint-disable-next-line prettier/prettier
+
 export class SharedModule { }

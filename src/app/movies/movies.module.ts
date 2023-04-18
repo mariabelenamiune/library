@@ -8,5 +8,5 @@ import { SharedModule } from '@shared/shared.module';
   declarations: [MovieDetailComponent, MoviesListComponent],
   imports: [MoviesRoutingModule, SharedModule]
 })
-// eslint-disable-next-line prettier/prettier
+
 export class MoviesModule { }
