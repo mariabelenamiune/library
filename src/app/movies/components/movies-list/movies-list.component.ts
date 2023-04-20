@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PopularResults } from '@app/movies/models/popular-movies.model';
 import { MoviesService } from '@movies/services/movies.service';
 
 @Component({
   selector: 'movies-list',
   templateUrl: './movies-list.component.html',
-  styleUrls: ['./movies-list.component.scss']
+  styleUrls: ['./movies-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MoviesListComponent implements OnInit {
   movies: PopularResults[];
