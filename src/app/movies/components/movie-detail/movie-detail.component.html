@@ -1,1 +1,8 @@
-<p>movie-detail works!</p>
+<h2>{{ movie.original_title }}</h2>
+<ul>
+    <li><span>Release date: </span>{{ movie.release_date }}</li>
+    <li><span>Popularity: </span>{{ movie.popularity }}</li>
+    <li><span>Overview: </span>{{ movie.overview }}</li>
+    <li><span>Language: </span>{{ movie.original_language | uppercase }}</li>  
+    <li><span>Id: </span>{{ movie.id }}</li>
+</ul>

@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MovieGenre } from '@app/movies/models/movie.model';
+import { Router } from '@angular/router';
+import { Movie, MovieGenre } from '@app/movies/models/movie.model';
+import { MoviesService } from '@app/movies/services/movies.service';
+import { share } from 'rxjs';
 
 @Component({
   selector: 'movies-list',
@@ -11,5 +14,12 @@ export class MoviesListComponent {
   @Input() moviesSelected: any;
   @Input() genreSelected: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+  }
+
+  goToMovieDetail(id): void {
+    this.router.navigate(['/movies/' + id]);
+  }
 }

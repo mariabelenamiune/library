@@ -1,7 +1,7 @@
 <h2>Movies by genre: {{ genreSelected }}</h2>
 
 <ul *ngFor="let movie of moviesSelected">
-  <li>
+  <li (click)="goToMovieDetail(movie.id)">
     {{ movie.title }}
   </li>
 </ul>

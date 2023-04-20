@@ -29,9 +29,15 @@ export class MoviesHomeComponent {
   ];
 
   moviesByGenre: MovieGenre;
-  genreSelectedValue: string;
+  genreSelectedValue: string = "Popular";
 
   constructor(private moviesService: MoviesService) { }
+
+  ngOnInit(): void {
+    this.moviesService.getPopularMovies().subscribe(movies => {
+      this.moviesByGenre = movies.results;
+    })
+  }
 
   genreSelected(event): void {
     this.genreSelectedValue = event.name;
