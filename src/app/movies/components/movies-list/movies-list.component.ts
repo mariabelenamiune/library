@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { PopularResults } from '@app/movies/models/popular-movies.model';
-import { MoviesService } from '@movies/services/movies.service';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { MovieGenre } from '@app/movies/models/movie.model';
 
 @Component({
   selector: 'movies-list',
@@ -8,17 +7,9 @@ import { MoviesService } from '@movies/services/movies.service';
   styleUrls: ['./movies-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MoviesListComponent implements OnInit {
-  movies: PopularResults[];
-  errorMessage: string;
-  errorResponse: boolean;
+export class MoviesListComponent {
+  @Input() moviesSelected: any;
+  @Input() genreSelected: string;
 
-  constructor(private moviesService: MoviesService) { }
-
-  ngOnInit(): void {
-    this.moviesService.getPopularMovies().subscribe((movies) => {
-      this.movies = movies.results
-    }
-    )
-  }
+  constructor() { }
 }

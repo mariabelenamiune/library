@@ -1,20 +1,26 @@
-<p>movies-home works!</p>
 <mat-toolbar color="primary">
 	<span class="fill-remaining-space">Choose which genre of movie do you want to watch</span>
 </mat-toolbar>
 
 <div class="container"> 
-  
-    <form (ngSubmit)="onSubmit()" class="form">
+
+    <form class="form">
     
+      <h3>Genre of movies available:</h3>
+      
       <mat-form-field appearance="fill">
-        <mat-label>Favorite food</mat-label>
-          <mat-select [formControl]="control" placeholder="Genre">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{food.viewValue}}
-            </mat-option>
-           </mat-select>
+        <mat-label>Favorite genre:</mat-label>
+        <mat-select [formControl]="genreControl" required (selectionChange)="genreSelected($event.value)">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let genre of genres" [value]="genre">
+            {{ genre.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="genreControl.hasError('required')">Please choose a genre</mat-error>
+        <mat-hint>{{ genreControl.value?.id }}</mat-hint>
       </mat-form-field>
 
     </form>
 </div>
+
+<movies-list [moviesSelected]="moviesByGenre" [genreSelected]="genreSelectedValue"></movies-list>

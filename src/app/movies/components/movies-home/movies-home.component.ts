@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { MovieGenre } from '@app/movies/models/movie.model';
+import { MoviesService } from '@app/movies/services/movies.service';
+import { Observable } from 'rxjs';
 
-
-interface Food {
-  value: string;
-  viewValue: string;
+interface Genre {
+  name: string;
+  id: number;
 }
-
-
 @Component({
   selector: 'app-movies-home',
   templateUrl: './movies-home.component.html',
@@ -15,22 +15,32 @@ interface Food {
 })
 
 export class MoviesHomeComponent {
-
-  control = new FormControl("steak-0");
-  foods: Food[] = [
-    { value: "steak-0", viewValue: "Steak" },
-    { value: "pizza-1", viewValue: "Pizza" },
-    { value: "tacos-2", viewValue: "Tacos" }
+  genreControl = new FormControl<Genre | null>(null, Validators.required);
+  selectFormControl = new FormControl('', Validators.required);
+  genres: Genre[] = [
+    { name: 'Action', id: 28 },
+    { name: 'Adventure', id: 12 },
+    { name: 'Animation', id: 16 },
+    { name: 'Comedy', id: 35 },
+    { name: 'Crime', id: 80 },
+    { name: 'Documentary', id: 99 },
+    { name: 'Drama', id: 18 },
+    { name: 'Horror', id: 27 },
   ];
 
-  constructor() {
-    this.control.valueChanges.subscribe(s => {
-      console.log(`The selected value is ${s}`);
-    });
+  moviesByGenre: MovieGenre;
+  genreSelectedValue: string;
+
+  constructor(private moviesService: MoviesService) { }
+
+  genreSelected(event): void {
+    this.genreSelectedValue = event.name;
+    this.getMoviesByGenre(event.id);
   }
 
-  onSubmit() {
-
+  getMoviesByGenre(genre) {
+    this.moviesService.getMovieByGenre(genre).subscribe(movies => {
+      this.moviesByGenre = movies.results;
+    })
   }
-
 }

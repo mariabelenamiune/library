@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
-import { Observable, catchError, map, of, throwError } from 'rxjs';
-import { Movie } from '@app/movies/models/movie.model';
+import { Observable, catchError, map, of } from 'rxjs';
 import { PopularMovie } from '@app/movies/models/popular-movies.model';
 
 @Injectable({
@@ -18,6 +17,10 @@ export class MoviesService {
     return this.http.get<PopularMovie>(
       `${this.baseUrl}/movie/popular?`
     ).pipe(this.handleResponse);
+  }
+
+  getMovieByGenre(genre: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/discover/movie?api_key=c0517ed28868f122442028d5560db1d4&with_genres=${genre}`).pipe(this.handleResponse);
   }
 
   private handleResponse(observable: Observable<any>): Observable<any> {
