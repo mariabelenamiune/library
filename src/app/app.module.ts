@@ -5,10 +5,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MoviesModule } from '@app/movies/movies.module';
-import { AuthModule } from './auth/auth.module';
-import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
-import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from '@auth/auth.module';
+import { SharedModule } from '@shared/shared.module';
+import { CoreModule } from '@core/core.module';
+import { AppRoutingModule } from '@app/app-routing.module';
 import { MoviesInterceptorService } from '@movies/services/movies-interceptor.service';
 
 @NgModule({

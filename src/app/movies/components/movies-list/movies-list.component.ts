@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Movie, MovieGenre } from '@app/movies/models/movie.model';
-import { MoviesService } from '@app/movies/services/movies.service';
-import { share } from 'rxjs';
 
 @Component({
   selector: 'movies-list',

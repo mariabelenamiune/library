@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MovieGenre } from '@app/movies/models/movie.model';
 import { MoviesService } from '@app/movies/services/movies.service';
-import { Observable } from 'rxjs';
 
 interface Genre {
   name: string;

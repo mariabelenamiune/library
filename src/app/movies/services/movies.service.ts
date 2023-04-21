@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable, catchError, map, of } from 'rxjs';
 import { PopularMovie } from '@app/movies/models/popular-movies.model';
-import { Movie } from '../models/movie.model';
-
 @Injectable({
   providedIn: 'root'
 })

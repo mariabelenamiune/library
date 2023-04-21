@@ -29,7 +29,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -45,7 +44,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { DialogModule } from '@angular/cdk/dialog';
-
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 @NgModule({
     exports: [
         A11yModule,
@@ -95,6 +94,10 @@ import { DialogModule } from '@angular/cdk/dialog';
         PortalModule,
         ScrollingModule,
         DialogModule,
+        MatProgressSpinnerModule
+    ],
+    imports: [
+        MatProgressSpinnerModule
     ]
 })
 export class MaterialModule { }
