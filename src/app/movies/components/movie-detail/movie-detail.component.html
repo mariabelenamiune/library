@@ -1,12 +1,31 @@
+<mat-toolbar color="primary">
+	<span class="fill-remaining-space">Movie selected</span>
+</mat-toolbar>
+
 <ng-container *ngIf="movie$ | async as movieData; else loading">
     <h2>{{ movieData.original_title  }}</h2>
-    <ul>
-        <li><span>Release date: </span>{{ movieData.release_date }}</li>
-        <li><span>Popularity: </span>{{ movieData.popularity }}</li>
-        <li><span>Overview: </span>{{ movieData.overview }}</li>
-        <li><span>Language: </span>{{ movieData.original_language | uppercase }}</li>  
-        <li><span>Id: </span>{{ movieData.id }}</li>
-    </ul>
+    <mat-list role="list">
+        <mat-list-item role="listitem">
+            <mat-icon matListItemIcon>control_point</mat-icon>
+            <span>Release date: {{ movieData.release_date }} </span>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+            <mat-icon matListItemIcon>control_point</mat-icon>
+            <span>Popularity: {{ movieData.popularity }} </span>
+        </mat-list-item>
+        <mat-list-item role="listitem" lines="3">
+            <mat-icon matListItemIcon>control_point</mat-icon>
+            <span>Overview: {{ movieData.overview }} </span>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+            <mat-icon matListItemIcon>control_point</mat-icon>
+            <span>Language: {{ movieData.original_language | uppercase }}</span>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+            <mat-icon matListItemIcon>control_point</mat-icon>
+            <span>Id: {{ movieData.id }}</span>
+        </mat-list-item>
+    </mat-list>
 </ng-container>
 
 <ng-template #loading>

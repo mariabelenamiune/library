@@ -1,11 +1,12 @@
 <ng-container *ngIf="data$ | async as movieData; else loading">
   <h2>Movies by genre: {{ genreSelected }}</h2>
 
-  <ul *ngFor="let movie of movieData">
-    <li (click)="goToMovieDetail(movie.id)">
+  <mat-list role="list" *ngFor="let movie of movieData">
+    <mat-list-item role="listitem" (click)="goToMovieDetail(movie.id)">
+      <mat-icon matListItemIcon>label_important</mat-icon>
       {{ movie.title }}
-    </li>
-  </ul>
+    </mat-list-item>
+  </mat-list>
 </ng-container>
 
 <ng-template #loading>
