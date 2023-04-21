@@ -1,11 +1,11 @@
-<ng-container  *ngIf="movieData$ | async; else loading">
-    <h2>{{ movieData$ | async }}</h2>
+<ng-container *ngIf="movie$ | async as movieData; else loading">
+    <h2>{{ movieData.original_title  }}</h2>
     <ul>
-        <li><span>Release date: </span>{{ movie.original_title }}</li>
-        <li><span>Popularity: </span>{{ movie.popularity }}</li>
-        <li><span>Overview: </span>{{ movie.overview }}</li>
-        <li><span>Language: </span>{{ movie.original_language | uppercase }}</li>  
-        <li><span>Id: </span>{{ movie.id }}</li>
+        <li><span>Release date: </span>{{ movieData.release_date }}</li>
+        <li><span>Popularity: </span>{{ movieData.popularity }}</li>
+        <li><span>Overview: </span>{{ movieData.overview }}</li>
+        <li><span>Language: </span>{{ movieData.original_language | uppercase }}</li>  
+        <li><span>Id: </span>{{ movieData.id }}</li>
     </ul>
 </ng-container>
 

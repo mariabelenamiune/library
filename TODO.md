@@ -48,10 +48,10 @@ Correciones:
 -- agregar tipado: movies: any; por Movies[]
 -- que las movies carguen solas, sin el click -->
 <!-- Agregar un form con filtros, e.g. por género. Cuando seleccione un género desde un menú select, el filtro debe reflejarse en la URL, hacer la query con el filtro, y mostrar la lista actualizada -->
-Agregar un loading, tanto para la query inicial como cuando se ejecuta un filtro
+<!-- Agregar un loading, tanto para la query inicial como cuando se ejecuta un filtro -->
 <!-- -- Agregar un map al movies service y que me mapee el response.result -->
-<!-- -- Agregar error handling en el servicio si se Detecta que hay un error, mostrar un mensaje -->
-Agregar error handling en el componente, e.g si se Detecta que hay un error, mostrar un mensaje
+<!-- -- Agregar error handling en el servicio si -->
+<!-- Agregar error handling en el componente, e.g si se Detecta que hay un error, mostrar un mensaje -->
 <!-- Crear un component nuevo que haga de componente padre de MoviesList -->  
 <!-- Movies Home: Este componente nuevo debe manejar toda la lógica de obtener las movies, y el MoviesList solo debería recibir las movies como input,. -->
 <!-- Movies list: modificarle el change detection strategy a onPush -->

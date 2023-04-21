@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MovieGenre, ResultsGenre } from '@app/movies/models/movie.model';
-import { PopularMovie, PopularResults } from '@app/movies/models/popular-movies.model';
+import { PopularResults } from '@app/movies/models/popular-movies.model';
 import { MoviesService } from '@app/movies/services/movies.service';
-import { Observable, finalize, map } from 'rxjs';
+import { Observable, delay, finalize, map, catchError, of } from 'rxjs';
 
 interface Genre {
   name: string;
@@ -29,21 +29,19 @@ export class MoviesHomeComponent {
     { name: 'Horror', id: 27 },
   ];
 
-  moviesByGenre: ResultsGenre[] | PopularResults[];
   genreSelectedValue: string = "Popular";
   dataAvailable: boolean = true;
-  data$: Observable<any>
-  genreData$: Observable<any>;
+  errorMessage: boolean = false;
+  data$: Observable<ResultsGenre[] | PopularResults[]>
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
-    this.moviesService.getPopularMovies().subscribe(movies => {
-      if (movies) {
-        this.dataAvailable = false;
-        this.moviesByGenre = movies.results;
-      }
-    })
+    this.data$ = this.moviesService.getPopularMovies().pipe(
+      delay(5000),
+      finalize(() => (this.dataAvailable = false)),
+      map(movie => movie.results)
+    );
   }
 
   genreSelected(event): void {
@@ -54,6 +52,11 @@ export class MoviesHomeComponent {
   getMoviesByGenre(genre) {
     this.data$ = this.moviesService.getMovieByGenre(genre).pipe(
       finalize(() => (this.dataAvailable = false)),
-      map(movie => movie.results));
+      map(movie => movie.results),
+      catchError(err => {
+        console.error(err);
+        return of(err)
+      })
+    )
   }
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
-import { Observable, catchError, map, of, take, tap } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 import { PopularMovie } from '@app/movies/models/popular-movies.model';
-import { Movie, MovieGenre, ResultsGenre } from '../models/movie.model';
+import { MovieGenre, ResultsGenre } from '../models/movie.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +28,7 @@ export class MoviesService {
   getMovieDetails(id): Observable<ResultsGenre> {
     return this.http.get<ResultsGenre>(`${this.baseUrl}/movie/${id}?`).pipe(
       catchError(err => {
-        throw 'error in source. Details: ' + err;
+        throw 'error in source. Details: ' + err.message;
       })
     )
 
@@ -40,7 +40,7 @@ export class MoviesService {
     })),
       catchError((err) => {
         console.log(err);
-        throw 'error in source. Details: ' + err;
+        throw 'error in source. Details: ' + err.message;
       }),
     )
   }

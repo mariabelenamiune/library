@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Movie, ResultsGenre } from '@app/movies/models/movie.model';
+import { ResultsGenre } from '@app/movies/models/movie.model';
 import { MoviesService } from '@app/movies/services/movies.service';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable, finalize, map } from 'rxjs';
 
 @Component({
   selector: 'movie-detail',
@@ -12,9 +12,9 @@ import { Observable, map, switchMap } from 'rxjs';
 })
 export class MovieDetailComponent {
 
-  movie: ResultsGenre;
   movieId: number;
-  movieData$: Observable<ResultsGenre>;
+  movie$: Observable<ResultsGenre>;
+  movieData: boolean = false;
 
   constructor(private moviesService: MoviesService, private route: ActivatedRoute) {
     this.route.params.subscribe((params) => {
@@ -22,18 +22,10 @@ export class MovieDetailComponent {
     });
   }
 
-  // async getDetailsMovie(id: number) {
-  //   await this.moviesService.getMovieDetails(id).subscribe(movie => {
-  //     this.movie = movie;
-  //     console.log(movie)
-  //   })
-  // }
-
   getDetailsMovie(id: number) {
-    this.movieData$ = this.moviesService.getMovieDetails(id).pipe(
-      map(data => {
-        return data;
-      })
-    )
+    this.movie$ = this.moviesService.getMovieDetails(id).pipe(
+      finalize(() => (this.movieData = false)),
+      map(movie => movie)
+    );
   }
 }
