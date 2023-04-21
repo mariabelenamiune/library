@@ -23,6 +23,6 @@
     </form>
 </div>
 
-<movies-list [moviesSelected]="moviesByGenre" [genreSelected]="genreSelectedValue"></movies-list>
+<movies-list [data$]="data$" [genreSelected]="genreSelectedValue"></movies-list>
 
-<spinner></spinner>
+<spinner *ngIf="dataAvailable"></spinner>

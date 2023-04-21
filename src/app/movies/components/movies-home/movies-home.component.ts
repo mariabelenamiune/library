@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { MovieGenre } from '@app/movies/models/movie.model';
+import { MovieGenre, ResultsGenre } from '@app/movies/models/movie.model';
+import { PopularMovie, PopularResults } from '@app/movies/models/popular-movies.model';
 import { MoviesService } from '@app/movies/services/movies.service';
+import { Observable, finalize, map } from 'rxjs';
 
 interface Genre {
   name: string;
@@ -27,14 +29,20 @@ export class MoviesHomeComponent {
     { name: 'Horror', id: 27 },
   ];
 
-  moviesByGenre: MovieGenre;
+  moviesByGenre: ResultsGenre[] | PopularResults[];
   genreSelectedValue: string = "Popular";
+  dataAvailable: boolean = true;
+  data$: Observable<any>
+  genreData$: Observable<any>;
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
     this.moviesService.getPopularMovies().subscribe(movies => {
-      this.moviesByGenre = movies.results;
+      if (movies) {
+        this.dataAvailable = false;
+        this.moviesByGenre = movies.results;
+      }
     })
   }
 
@@ -44,8 +52,8 @@ export class MoviesHomeComponent {
   }
 
   getMoviesByGenre(genre) {
-    this.moviesService.getMovieByGenre(genre).subscribe(movies => {
-      this.moviesByGenre = movies.results;
-    })
+    this.data$ = this.moviesService.getMovieByGenre(genre).pipe(
+      finalize(() => (this.dataAvailable = false)),
+      map(movie => movie.results));
   }
 }
