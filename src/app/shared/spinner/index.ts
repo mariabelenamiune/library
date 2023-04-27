@@ -1,5 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { MaterialModule } from '@shared/material/material.module';
+import { MaterialModule } from '@app/material/material.module';
 
 @Component({
     selector: 'spinner',

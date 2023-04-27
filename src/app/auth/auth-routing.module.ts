@@ -6,11 +6,11 @@ import { ProfileComponent } from '@auth/components/profile/profile.component';
 const routes: Routes = [
   {
     path: 'auth/login',
-    redirectTo: 'auth/login'
+    component: LoginComponent
   },
   {
     path: 'auth/profile',
-    redirectTo: 'auth/profile'
+    component: ProfileComponent
   }
 ];
 

@@ -21,7 +21,7 @@ export class MoviesService {
 
   getMovieByGenre(genre: string): Observable<MovieGenre> {
     return this.http.get<MovieGenre>(
-      `${this.baseUrl}/discover/movie?api_key=c0517ed28868f122442028d5560db1d4&with_genres=${genre}`)
+      `${this.baseUrl}/discover/movie?with_genre=${genre}`)
       .pipe(this.handleResponse);
   }
 

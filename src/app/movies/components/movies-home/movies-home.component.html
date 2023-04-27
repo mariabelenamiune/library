@@ -23,5 +23,10 @@
     </form>
 </div>
 
-<movies-list [data$]="data$" [genreSelected]="genreSelectedValue"></movies-list>
+<ng-container *ngIf="dataAvailable; else loading">
+  <movies-list [movies]="movies" [genreSelected]="genreSelectedValue"></movies-list>
+</ng-container>
 
+<ng-template #loading>
+  <spinner></spinner>
+</ng-template>

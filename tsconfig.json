@@ -9,7 +9,7 @@
     "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
     "strictPropertyInitialization": false,
     "sourceMap": true,
@@ -42,6 +42,9 @@
       ],
       "@shared/*": [
         "src/app/shared/*"
+      ],
+      "@material/*": [
+        "src/app/material/*"
       ],
     },
   },

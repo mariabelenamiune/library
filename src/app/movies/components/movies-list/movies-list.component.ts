@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ResultsGenre } from '@app/movies/models/movie.model';
+import { PopularResults } from '@app/movies/models/popular-movies.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class MoviesListComponent {
   @Input() genreSelected: string;
-  @Input() data$: Observable<any>;
+  @Input() movies: any[] = [];
   constructor(private router: Router) { }
 
   goToMovieDetail(id): void {

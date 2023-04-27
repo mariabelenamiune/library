@@ -5,11 +5,13 @@ import { MoviesListComponent } from '@movies/components/movies-list/movies-list.
 const routes: Routes = [
   {
     path: '',
-    component: MoviesListComponent
+    redirectTo: 'movies',
+    pathMatch: 'full'
   },
   {
     path: '**',
-    component: MoviesListComponent
+    redirectTo: 'movies',
+    pathMatch: 'full'
   }
 ];
 

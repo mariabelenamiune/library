@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MovieGenre, ResultsGenre } from '@app/movies/models/movie.model';
 import { PopularResults } from '@app/movies/models/popular-movies.model';
 import { MoviesService } from '@app/movies/services/movies.service';
@@ -30,33 +31,64 @@ export class MoviesHomeComponent {
   ];
 
   genreSelectedValue: string = "Popular";
-  dataAvailable: boolean = true;
+  dataAvailable: boolean = false;
   errorMessage: boolean = false;
-  data$: Observable<ResultsGenre[] | PopularResults[]>
+  movies: ResultsGenre[] | PopularResults[] = [];
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService, private router: Router,) { }
 
   ngOnInit(): void {
-    this.data$ = this.moviesService.getPopularMovies().pipe(
+    this.router.navigate(
+      [],
+      {
+        queryParams: { genre: 1 },
+        queryParamsHandling: 'merge'
+      });
+    this.moviesService.getPopularMovies().pipe(
       delay(5000),
-      finalize(() => (this.dataAvailable = false)),
-      map(movie => movie.results)
+      finalize(() => (this.dataAvailable = true)),
+      map(movie =>
+        this.movies = movie.results)
+    ).subscribe(
+      (movie => {
+        if (movie) {
+          this.movies = movie;
+          this.dataAvailable = true;
+        }
+      }
+      )
     );
   }
 
   genreSelected(event): void {
     this.genreSelectedValue = event.name;
     this.getMoviesByGenre(event.id);
+    this.router.navigate(
+      [],
+      {
+        queryParams: { genre: event.id },
+        queryParamsHandling: 'merge'
+      });
   }
 
   getMoviesByGenre(genre) {
-    this.data$ = this.moviesService.getMovieByGenre(genre).pipe(
-      finalize(() => (this.dataAvailable = false)),
-      map(movie => movie.results),
+    this.moviesService.getMovieByGenre(genre).pipe(
+      delay(5000),
+      finalize(() => (this.dataAvailable = true)),
+      map(movie =>
+        this.movies = movie.results),
       catchError(err => {
         console.error(err);
         return of(err)
       })
-    )
+    ).subscribe(
+      (movie => {
+        if (movie) {
+          this.movies = movie;
+          this.dataAvailable = true;
+        }
+      }
+      )
+    );
   }
 }

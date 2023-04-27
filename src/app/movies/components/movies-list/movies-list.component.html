@@ -1,7 +1,7 @@
-<ng-container *ngIf="data$ | async as movieData; else loading">
+<ng-container>
   <h2>Movies by genre: {{ genreSelected }}</h2>
 
-  <mat-list role="list" *ngFor="let movie of movieData">
+  <mat-list role="list" *ngFor="let movie of movies">
     <mat-list-item role="listitem" (click)="goToMovieDetail(movie.id)">
       <mat-icon matListItemIcon>label_important</mat-icon>
       {{ movie.title }}
@@ -9,6 +9,3 @@
   </mat-list>
 </ng-container>
 
-<ng-template #loading>
-  <spinner></spinner>
-</ng-template>
