@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { MovieGenre, ResultsGenre } from '@app/movies/models/movie.model';
+import { Router } from '@angular/router';
+import { ResultsGenre } from '@app/movies/models/movie.model';
 import { PopularResults } from '@app/movies/models/popular-movies.model';
 import { MoviesService } from '@app/movies/services/movies.service';
-import { Observable, delay, finalize, map, catchError, of } from 'rxjs';
+import { delay, finalize, map, catchError, of } from 'rxjs';
 
 interface Genre {
   name: string;
@@ -38,17 +38,17 @@ export class MoviesHomeComponent {
   constructor(private moviesService: MoviesService, private router: Router,) { }
 
   ngOnInit(): void {
-    this.router.navigate(
-      [],
-      {
-        queryParams: { genre: 1 },
-        queryParamsHandling: 'merge'
-      });
     this.moviesService.getPopularMovies().pipe(
       delay(5000),
       finalize(() => (this.dataAvailable = true)),
       map(movie =>
-        this.movies = movie.results)
+        this.movies = movie.results),
+      catchError(err => {
+        this.errorMessage = true;
+        this.dataAvailable = false;
+        console.error(err);
+        return of(err)
+      })
     ).subscribe(
       (movie => {
         if (movie) {
@@ -66,18 +66,19 @@ export class MoviesHomeComponent {
     this.router.navigate(
       [],
       {
-        queryParams: { genre: event.id },
-        queryParamsHandling: 'merge'
-      });
+        queryParams: { genre: event.id }
+      }
+    );
   }
 
   getMoviesByGenre(genre) {
     this.moviesService.getMovieByGenre(genre).pipe(
-      delay(5000),
       finalize(() => (this.dataAvailable = true)),
       map(movie =>
         this.movies = movie.results),
       catchError(err => {
+        this.errorMessage = true;
+        this.dataAvailable = false;
         console.error(err);
         return of(err)
       })
@@ -90,5 +91,7 @@ export class MoviesHomeComponent {
       }
       )
     );
+
+    console.log(this.errorMessage)
   }
 }

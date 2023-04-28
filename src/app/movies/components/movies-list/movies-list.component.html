@@ -1,4 +1,4 @@
-<ng-container>
+<ng-container *ngIf="movies">
   <h2>Movies by genre: {{ genreSelected }}</h2>
 
   <mat-list role="list" *ngFor="let movie of movies">

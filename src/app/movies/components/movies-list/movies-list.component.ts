@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ResultsGenre } from '@app/movies/models/movie.model';
-import { PopularResults } from '@app/movies/models/popular-movies.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'movies-list',
@@ -12,8 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class MoviesListComponent {
   @Input() genreSelected: string;
-  @Input() movies: any[] = [];
-  constructor(private router: Router) { }
+  @Input() movies: any;
+  constructor(private router: Router) {
+  }
 
   goToMovieDetail(id): void {
     this.router.navigate(['/movies/' + id]);

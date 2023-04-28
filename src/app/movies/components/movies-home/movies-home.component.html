@@ -23,10 +23,22 @@
     </form>
 </div>
 
-<ng-container *ngIf="dataAvailable; else loading">
-  <movies-list [movies]="movies" [genreSelected]="genreSelectedValue"></movies-list>
-</ng-container>
+<div *ngIf="dataAvailable; then block else loading"></div>
 
 <ng-template #loading>
   <spinner></spinner>
+</ng-template>
+
+
+<ng-template #block>
+    <section *ngIf="errorMessage">
+      <h3 class="error-message">
+        At this moment you are not able to see the list of movies. Please, try it later
+      </h3>
+    </section>
+    <movies-list 
+    *ngIf="!errorMessage" 
+    [movies]="movies" 
+    [genreSelected]="genreSelectedValue">
+  </movies-list>
 </ng-template>
